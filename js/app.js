@@ -12,7 +12,7 @@ $(document).ready(function(){
   		$(".overlay").fadeOut(1000);
   	});
 
-  	alert("new num is " + generateNum());
+  	//alert("new num is " + generateNum());
 
   	counter = 0;
   	$("form").submit(function(e){
