@@ -12,14 +12,18 @@ $(document).ready(function(){
   		$(".overlay").fadeOut(1000);
   	});
 
+  	alert("new num is " + generateNum());
+
   	counter = 0;
-  	$("form").submit(function(){
-  		alert("button pressed");
+  	$("form").submit(function(e){
   		var num = getNum();
-  		$("#feedback").text("you entered " + num);
+  		checkNum(num);
   		counter++;
   		$("#count").text(counter);
-  		return false;
+  		$("#userGuess").attr("placeholder", "Enter your Guess").val("").focus().blur();
+  		//return false;
+  		e.preventDefault();
+
   		
   	});
 
@@ -29,8 +33,17 @@ $(document).ready(function(){
   	// FUNCTIONS
   	function getNum(){
   		var num = $("#userGuess").val();
-  		//alert(num);
   		return num;
+  	};
+
+  	// Make sure number is a whole number
+  	function checkNum(n){
+  		if (n % 1 != 0){
+  			$("#feedback").text("The number: " +n +" is not a whole number");
+  		}
+  		else { 
+  			$("#feedback").text("You entered " + n);
+  		};
   	};
 
   	function newGame(){
@@ -39,6 +52,10 @@ $(document).ready(function(){
  		});  	
 	};
 
+	function generateNum(){
+		// random number between 1 and 100
+		var num = Math.floor((Math.random() * 100) + 1);
+		return num;
+	};
+
 });
-
-
