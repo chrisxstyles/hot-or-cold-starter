@@ -44,11 +44,19 @@ $(document).ready(function(){
   			var findMax = maxNum(r, n);
   			var highNum = findMax[0];
   			var lowNum  = findMax[1];
-  			if (highNum - lowNum >= 50){
+  			secretNum   = highNum - lowNum;
+
+  			if (secretNum >= 50){
   				$("#feedback").text("You entered " +n +", You are COLD!");
   			}
-  			else if (highNum - lowNum <= 20){ 
+  			else if (secretNum <= 20 && secretNum > 10){ 
   				$("#feedback").text("You entered " +n +", You are WARM!");
+  			}
+  			else if (secretNum <= 10 && secretNum > 5){
+  				$("#feedback").text("You entered " +n +", You are HOT!");
+  			}
+  			else if (secretNum <= 5){
+  				$("#feedback").text("You entered " +n +", You are EXTREMELY HOT!");
   			}
   		};
   	};
