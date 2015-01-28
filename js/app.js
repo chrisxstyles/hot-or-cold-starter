@@ -21,7 +21,7 @@ $(document).ready(function(){
   		checkNum(randomNum, userNum);
   		counter++;
   		$("#count").text(counter);
-  		$("#userGuess").attr("placeholder", "Enter your Guess").val("").focus().blur();
+  		$("#userGuess").attr("placeholder", "Enter your Guess").val("").focus();
   		//return false;
   		e.preventDefault();
   	});
@@ -40,13 +40,23 @@ $(document).ready(function(){
   		if (n % 1 != 0){
   			$("#feedback").text("The number: " +n +" is not a whole number");
   		}
+  		else if (n == r){
+  			$("#feedback").text("You Guessed Right!");
+  			$("form").submit(function(e){
+  				$("#feedback").text("Click on New Game.");
+  				$("#count").text("0");
+  			});
+  		}
   		else {
   			var findMax = maxNum(r, n);
   			var highNum = findMax[0];
   			var lowNum  = findMax[1];
   			secretNum   = highNum - lowNum;
 
-  			if (secretNum >= 50){
+  			if (secretNum > 50){
+  				$("#feedback").text("You entered " +n +", You are EXTREMELY COLD!");
+  			}
+  			if (secretNum <= 50 && secretNum > 20){
   				$("#feedback").text("You entered " +n +", You are COLD!");
   			}
   			else if (secretNum <= 20 && secretNum > 10){ 
