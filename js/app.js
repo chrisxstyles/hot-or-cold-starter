@@ -13,7 +13,7 @@ $(document).ready(function(){
   	});
 
   	var randomNum = generateNum();
-  	alert("random num is " + randomNum);
+  	//alert("random num is " + randomNum);
 
   	counter = 0;
   	$("form").submit(function(e){
